@@ -1,0 +1,75 @@
+\chapter{seqExtract}
+
+\texttt{seqExtract} is a small program to extract sequences from a sequence set. It allows to extract sequences many different criteria.
+
+
+\section{Options}
+General options:
+
+\begin{table}[H]
+\caption{General options for \textit{seqExtract}}
+\begin{tabular}{lp{12cm}}\hline
+option & description\\
+\hline
+  -h --help & Displays a simple help message\\
+  -i --in & The input file. Currently only the \texttt{fasta}-format is supported.\\
+  -I --index &  Uses an index file. This file can speed up sequence extraction in larger files (e.g. genomes) especially when rerunning the command several times. One can specify the path to the index file using the 'indexFile' parameter. If none is specified a file will be created with same name as input file but with an additional '.sei' extension. \\
+  -F --indexFile & The path to the index file if not the default position should be used.\\
+  -l --inputList & A file containing a list of files to be used as input\\
+  \hline
+\end{tabular}
+\end{table}
+
+
+
+
+
+
+Output options:
+\begin{table}[H]
+\caption{Output options for \textit{seqExtract}}
+\begin{tabular}{lp{12cm}}
+\hline
+Option & Description\\
+\hline
+  -o, --out & The output file. Currently only \texttt{fasta}-format output is supported.\\
+  -a, --append &  Appends the extracted sequences to a file. (default: false)\\
+  -c, --remove-comments &   Remove comments from the fasta headers. (default: false)\\
+  \hline
+\end{tabular}
+\end{table}
+
+
+Extract options:
+\begin{table}[H]
+\caption{Extract options for \textit{seqExtract}}
+\begin{tabular}{llp{12cm}}
+\hline
+Option & Default value & Description\\
+\hline
+  -e, --extract        & The sequence to extract\\
+  -d, --delimiter      & The delimiter to use\\
+  -E, --regex          & A regular expression to match a name\\
+  -r, --remove         & Remove the given sequences\\
+  -n, --numSeqs        & The number of sequences to extract\\
+  -s, --seed           & Seed for random extract function\\
+  -f, --function       & The function to use for extraction\\
+  -m, --ignore-missing & Ignore missing sequences\\
+  \hline
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[H]
+\caption{Modifying options for \textit{seqExtract}}
+\begin{tabular}{llp{12cm}}
+\hline
+Option & Default value & Description\\
+\hline
+  -t, --translate &                 Translate into amino acid\\
+  -T, --table & arg (=standard)     The translation table to use\\
+  -R, --revComp &                   Calculate the reverse complement\\
+  \hline
+\end{tabular}
+\end{table}

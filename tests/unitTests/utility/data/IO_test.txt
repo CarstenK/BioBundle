@@ -1,0 +1,5 @@
+This is a very simple file
+to test that input and
+output of files using the 
+Input and Output class
+works as expected.

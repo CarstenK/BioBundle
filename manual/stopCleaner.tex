@@ -1,0 +1,28 @@
+\chapter{stopCleaner}
+
+\texttt{stopCleaner} can remove stop characters at the end of a sequence and furthermore allows to remove pseudogenes (as defined by having a stop codon in the middle of the sequence) from a set. 
+
+\begin{table}[H]
+\caption{General options for \textit{seqExtract}}
+\begin{tabular}{lcp{12cm}}\hline
+option & default & description\\
+\hline
+-h, --help & - & Produces a simple help message\\
+  -i, --in &-&              The input file: Protein sequences in fasta format. If none is provided sequences are read from stdin.\\
+  -o, --out &-&    The output file. If none is provided sequences will be printed to stdout\\
+  --no-final-stop-removal  &-&     Do not remove the final stop characters.\\
+  -r, --remove-pseudogenes &-&   Remove pseudogenes. Pseudogenes are in this case all genes that do not contain a stop at the end.\\
+  -s, --stop   &.*   &      The stop characters to use.\\
+  -l, --list  &-&            Produces a list of genes that were removed and writes it to the provided file.\\
+  -k, --keep  &-&            Keep sequences with these IDs. Can be useful to prevent removal of sequences that are known to correctly contain a stop codon (etc. selenoproteins)\\
+  -R, --replace &-&          Replace stops with this chararcter.\\
+  \hline
+\end{tabular}
+\end{table}
+
+
+Examples:
+
+\begin{lstlisting}
+./stopCleaner -i dmel.fa
+\end{lstlisting}

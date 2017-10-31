@@ -1,0 +1,3 @@
+x seq1 a
+x seq3 a
+x seq4 a

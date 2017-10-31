@@ -1,0 +1,6 @@
+chr1	test	gene	1	1	1	-	.	ID=gene1
+chr1	test	mRNA	1	1	1	-	.	ID=seq1;Parent=gene1
+chr1	test	mRNA	1	1	1	-	.	ID=seq2;Parent=gene1
+chr1	test	gene	1	1	1	-	.	ID=gene2
+chr1	test	mRNA	1	1	1	-	.	ID=seq3;Parent=gene2
+chr1	test	mRNA	1	1	1	-	.	ID=seq4;Parent=gene2
