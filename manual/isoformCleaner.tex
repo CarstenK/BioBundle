@@ -1,4 +1,88 @@
 \chapter{isoformCleaner}
 
-\texttt{isoformCleaner} is a small program to remove isoforms from a set and keep only the largest one. 
+\texttt{isoformCleaner} is a small program to remove isoforms from a set and keep only the largest one. This is often useful as for many analyses isoforms will influence the results.   
 
+
+\section{Options}
+
+
+This section explains all the parameters that can be used with the program.
+\subsection{General options}
+
+These are the general options that can be used.
+\begin{table}[H]
+\caption{General options for \textit{seqExtract}}
+\begin{tabular}{lcp{10cm}}\hline
+option & default & description\\
+\hline
+option 	&default 	&effect\\
+-h, --help &	- 	&Prints a simple help message\\
+-i, --in &	- 	&The sequence file to clean\\
+-o, --out &	- 	&The output file\\
+-s, --splitchar& 	-& 	The split character to use to distinguish gene name from isoform extension (e.g. “-” in “Gene1-PA”).\\
+\end{tabular}
+\end{table}
+
+\subsection{Regex options}
+
+These are the options that can be used for a regular expression based cleaning. The regular expression should identify a section of the sequence header that is the same for all isoforms of a gene (e.g. the gene name).
+
+\begin{table}[H]
+\caption{General options for \textit{seqExtract}}
+\begin{tabular}{lcp{10cm}}\hline
+option & default & description\\
+\hline
+option &	default &	effect\\
+-r, --regular 	&- 	&Regular expression\\
+-c, --comment 	&- 	&Search comment only\\
+-n, --name 	&- 	&Search name only\\
+-p, --preset &	 -  	&Preset regex.\\\hline
+\end{tabular}
+\end{table}
+
+For two common patterns some regular expressions have precoded. The availabele presets can be seend in the table below.
+\begin{center}
+ \begin{table}[H]
+\caption{Preset options}
+\begin{tabular}{ll}\hline
+name &regular expression\\
+gene & \verb| gene[:=]\s*([\S]+) |\\
+flybase& \verb| parent=(FBgn[^ ,]+,) |\\\hline
+\end{tabular}
+\end{table}
+\end{center}
+
+\subsection{GFF options}
+
+If none of the above works there is the chance that you can use a gff to do the isoform cleaning.
+This is \textcolor{red}{highly experimental} and only works if the Parent field is present. Furthermore currently there is no support for multiple parents.
+
+\begin{table}[H]
+\caption{GFF options}
+\begin{tabular}{lcp{10cm}}\hline
+option & default & description\\
+\hline
+-g, --gff 	&-& 	The gff file in gff3 format.\\
+-t, --type 	&mRNA& 	The feature type that contains the sequence name as ID and the gene name in the parent field.\\
+-f, --id-field 	&ID& 	The argument is used to identify the field in the GFF-file that contains the sequence names. Usually ID is correct.\\
+\end{tabular}
+\end{table}
+
+
+\section{Examples}
+
+Here are some very basic example on the usage of isoform cleaner.
+
+\begin{lstlisting}
+# use a split character
+isoformCleaner -s '.' -i foo.fa -o bar.fa
+
+# usa a regular expression
+isoformCleaner -r "parent=(FBgn[^ ,]+,)" -i foo.fa -o bar.fa
+
+# same as above but with a preset value
+isoformCleaner -p flybase -i foo.fa -o bar.fa
+
+# gff cleaning
+isoformCleaner -i foo.fa -g bar.gff
+\end{lstlisting}
